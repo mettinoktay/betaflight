@@ -18,6 +18,8 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
+/*here goes a dummy comment*/
+
 #include <stdbool.h>
 #include <stdint.h>
 
