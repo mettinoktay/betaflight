@@ -22,7 +22,7 @@
 /*
    This file has been auto generated from unified-targets repo.
 
-   The auto generation is transitional only.
+   The auto generation is transitional only, please remove this comment once the file is edited.
 */
 
 #define FC_TARGET_MCU     STM32F411
@@ -32,3 +32,61 @@
 
 #define USE_ACC_SPI_MPU6000
 #define USE_GYRO_SPI_MPU6000
+
+#define BEEPER_PIN           PB6
+#define MOTOR1_PIN           PB0
+#define MOTOR2_PIN           PB1
+#define MOTOR3_PIN           PB10
+#define MOTOR4_PIN           PB9
+#define LED_STRIP_PIN        PA8
+#define UART1_TX_PIN         PA9
+#define UART2_TX_PIN         PA2
+#define UART1_RX_PIN         PA10
+#define UART2_RX_PIN         PA3
+#define INVERTER1_PIN        PC13
+#define LED0_PIN             PA14
+#define SPI1_SCK_PIN         PA5
+#define SPI1_MISO_PIN        PA6
+#define SPI1_MOSI_PIN        PA7
+#define ADC_VBAT_PIN         PA0
+#define ADC_CURR_PIN         PB4
+#define MAX7456_SPI_CS_PIN   PB12
+#define GYRO_1_EXTI_PIN      PA1
+#define GYRO_1_CS_PIN        PA4
+#define USB_DETECT_PIN       PC15
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP( 0, PB0 , 2,  0) \
+    TIMER_PIN_MAP( 1, PB1 , 2,  0) \
+    TIMER_PIN_MAP( 2, PB10, 1,  0) \
+    TIMER_PIN_MAP( 3, PB9 , 1, -1) \
+    TIMER_PIN_MAP( 4, PA8 , 1,  0) \
+
+
+
+#define ADC1_DMA_OPT        1
+
+//TODO #define MAG_HARDWARE NONE
+//TODO #define BARO_HARDWARE NONE
+//TODO #define SERIALRX_PROVIDER SBUS
+//TODO #define BLACKBOX_DEVICE NONE
+//TODO #define DSHOT_IDLE_VALUE 600
+//TODO #define DSHOT_BURST ON
+//TODO #define MOTOR_PWM_PROTOCOL DSHOT300
+//TODO #define MOTOR_POLES 12
+//TODO #define ALIGN_BOARD_ROLL 180
+//TODO #define VBAT_MAX_CELL_VOLTAGE 435
+//TODO #define CURRENT_METER NONE
+//TODO #define BATTERY_METER ADC
+#define BEEPER_INVERTED
+//TODO #define BEEPER_OD OFF
+//TODO #define YAW_MOTORS_REVERSED ON
+//TODO #define SMALL_ANGLE 90
+//TODO #define PID_PROCESS_DENOM 1
+#define SYSTEM_HSE_MHZ 8
+#define USE_SPI_GYRO
+#define GYRO_1_SPI_INSTANCE SPI1
+#define GYRO_1_ALIGN CW90_DEG
+#define GYRO_1_ALIGN_YAW 900
+#define MAX7456_SPI_INSTANCE SPI0
+//TODO #define SBUS_BAUD_FAST OFF

@@ -821,17 +821,15 @@ void init(void)
     flashfsInit();
 #endif
 
-#ifdef USE_BLACKBOX
 #ifdef USE_SDCARD
-    if (blackboxConfig()->device == BLACKBOX_DEVICE_SDCARD) {
-        if (sdcardConfig()->mode) {
-            if (!(initFlags & SD_INIT_ATTEMPTED)) {
-                sdCardAndFSInit();
-                initFlags |= SD_INIT_ATTEMPTED;
-            }
+    if (sdcardConfig()->mode) {
+        if (!(initFlags & SD_INIT_ATTEMPTED)) {
+            sdCardAndFSInit();
+            initFlags |= SD_INIT_ATTEMPTED;
         }
     }
 #endif
+#ifdef USE_BLACKBOX
     blackboxInit();
 #endif
 
@@ -1016,9 +1014,7 @@ void init(void)
     spiInitBusDMA();
 #endif
 
-#ifdef DEBUG
     debugInit();
-#endif
 
     unusedPinsInit();
 

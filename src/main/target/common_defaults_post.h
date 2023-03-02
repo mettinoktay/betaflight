@@ -24,20 +24,6 @@
 #define DEBUG_MODE DEBUG_NONE
 #endif
 
-#ifdef USE_MAX7456
-#ifndef MAX7456_CLOCK_CONFIG_DEFAULT
-#define MAX7456_CLOCK_CONFIG_DEFAULT    MAX7456_CLOCK_CONFIG_OC
-#endif
-
-#ifndef MAX7456_SPI_CS_PIN
-#define MAX7456_SPI_CS_PIN              NONE
-#endif
-
-#ifndef MAX7456_SPI_INSTANCE
-#define MAX7456_SPI_INSTANCE            NULL
-#endif
-#endif
-
 // pg/flash
 
 #ifdef USE_FLASH_M25P16
@@ -133,66 +119,6 @@
 #define RX_SPI_BIND_PIN NONE
 #endif
 
-#if defined(USE_RX_EXPRESSLRS)
-#if !defined(RX_EXPRESSLRS_SPI_RESET_PIN)
-#define RX_EXPRESSLRS_SPI_RESET_PIN NONE
-#endif
-
-#if !defined(RX_EXPRESSLRS_SPI_BUSY_PIN)
-#define RX_EXPRESSLRS_SPI_BUSY_PIN NONE
-#endif
-
-#if !defined(RX_EXPRESSLRS_TIMER_INSTANCE)
-#define RX_EXPRESSLRS_TIMER_INSTANCE NULL
-#endif
-
-#endif
-
-#endif
-
-// gyro hardware
-
-#if !defined(GYRO_1_SPI_INSTANCE) && !defined(SIMULATOR_BUILD)
-#define GYRO_1_SPI_INSTANCE     NULL
-#endif
-
-#if !defined(GYRO_1_CS_PIN)
-#define GYRO_1_CS_PIN           NONE
-#endif
-
-#if !defined(GYRO_1_EXTI_PIN)
-#define GYRO_1_EXTI_PIN         NONE
-#endif
-
-// F4 and F7 single gyro boards
-#if defined(USE_MULTI_GYRO) && !defined(GYRO_2_SPI_INSTANCE)
-#define GYRO_2_SPI_INSTANCE     NULL
-#define GYRO_2_CS_PIN           NONE
-#define GYRO_2_EXTI_PIN         NONE
-#endif
-
-#if defined(MPU_ADDRESS)
-#define GYRO_I2C_ADDRESS MPU_ADDRESS
-#else
-#define GYRO_I2C_ADDRESS 0 // AUTO
-#endif
-
-#ifdef USE_MULTI_GYRO
-#define MAX_GYRODEV_COUNT 2
-#define MAX_ACCDEV_COUNT 2
-#else
-#define MAX_GYRODEV_COUNT 1
-#define MAX_ACCDEV_COUNT 1
-#endif
-
-// gyro alignments
-
-#if !defined(GYRO_1_ALIGN)
-#define GYRO_1_ALIGN            CW0_DEG
-#endif
-
-#if !defined(GYRO_2_ALIGN)
-#define GYRO_2_ALIGN            CW0_DEG
 #endif
 
 // Previously there was logic here to default GYRO_1_CUSTOM_ALIGN and GYRO_2_CUSTOM_ALIGN

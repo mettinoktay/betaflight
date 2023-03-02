@@ -20,8 +20,6 @@
 
 #pragma once
 
-#include "drivers/stm32/platform_stm32.h"
-
 #define TARGET_BOARD_IDENTIFIER "SH74"
 
 #define USBD_PRODUCT_STRING     "Betaflight STM32H743"
@@ -88,3 +86,5 @@
 #define USE_CUSTOM_DEFAULTS
 #define USE_EXTI
 #define USE_TIMER_UP_CONFIG
+
+#define FLASH_PAGE_SIZE ((uint32_t)0x20000) // 128K sectors

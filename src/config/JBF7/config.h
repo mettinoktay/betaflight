@@ -22,7 +22,7 @@
 /*
    This file has been auto generated from unified-targets repo.
 
-   The auto generation is transitional only.
+   The auto generation is transitional only, please remove this comment once the file is edited.
 */
 
 #define FC_TARGET_MCU     STM32F7X2
@@ -36,3 +36,133 @@
 #define USE_BARO_BMP280
 #define USE_MAX7456
 #define USE_SDCARD
+
+#define BEEPER_PIN           PC15
+#define MOTOR1_PIN           PC8
+#define MOTOR2_PIN           PC6
+#define MOTOR3_PIN           PC9
+#define MOTOR4_PIN           PC7
+#define MOTOR5_PIN           PB6
+#define MOTOR6_PIN           PB7
+#define MOTOR7_PIN           PB1
+#define MOTOR8_PIN           PB0
+#define RX_PPM_PIN           PA3
+#define LED_STRIP_PIN        PA1
+#define UART1_TX_PIN         PA9
+#define UART2_TX_PIN         PA2
+#define UART3_TX_PIN         PB10
+#define UART4_TX_PIN         PC10
+#define UART5_TX_PIN         PC12
+#define UART1_RX_PIN         PA10
+#define UART2_RX_PIN         PA3
+#define UART3_RX_PIN         PB11
+#define UART4_RX_PIN         PC11
+#define UART5_RX_PIN         PD2
+#define I2C2_SCL_PIN         PB10
+#define I2C2_SDA_PIN         PB11
+#define LED0_PIN             PC4
+#define SPI1_SCK_PIN         PA5
+#define SPI2_SCK_PIN         PB13
+#define SPI3_SCK_PIN         PB3
+#define SPI1_MISO_PIN        PA6
+#define SPI2_MISO_PIN        PB14
+#define SPI3_MISO_PIN        PB4
+#define SPI1_MOSI_PIN        PA7
+#define SPI2_MOSI_PIN        PB15
+#define SPI3_MOSI_PIN        PB5
+#define CAMERA_CONTROL_PIN   PA0
+#define ADC_VBAT_PIN         PC1
+#define ADC_RSSI_PIN         PC0
+#define ADC_CURR_PIN         PC2
+#define SDCARD_CS_PIN        PA4
+#define PINIO1_PIN           PC13
+#define PINIO2_PIN           PC14
+#define PINIO3_PIN           PB8
+#define FLASH_CS_PIN         PB9
+#define MAX7456_SPI_CS_PIN   PB12
+#define GYRO_1_EXTI_PIN      PA8
+#define GYRO_2_EXTI_PIN      PB2
+#define GYRO_1_CS_PIN        PA15
+#define GYRO_2_CS_PIN        PC3
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP( 0, PA0 , 2,  0) \
+    TIMER_PIN_MAP( 1, PA3 , 3, -1) \
+    TIMER_PIN_MAP( 2, PC8 , 2,  1) \
+    TIMER_PIN_MAP( 3, PC6 , 2,  0) \
+    TIMER_PIN_MAP( 4, PC9 , 2,  0) \
+    TIMER_PIN_MAP( 5, PC7 , 2,  1) \
+    TIMER_PIN_MAP( 6, PB6 , 1,  0) \
+    TIMER_PIN_MAP( 7, PB7 , 1,  0) \
+    TIMER_PIN_MAP( 8, PB1 , 2,  0) \
+    TIMER_PIN_MAP( 9, PB0 , 2,  0) \
+    TIMER_PIN_MAP(10, PA1 , 1,  0) \
+
+
+
+#define ADC3_DMA_OPT        0
+
+//TODO #define GYRO_TO_USE BOTH
+//TODO #define MAG_BUSTYPE I2C
+#define MAG_I2C_INSTANCE (I2CDEV_2)
+//TODO #define BARO_BUSTYPE I2C
+#define BARO_I2C_INSTANCE (I2CDEV_2)
+//TODO #define SERIALRX_PROVIDER SBUS
+//TODO #define ADC_DEVICE 3
+//TODO #define BLACKBOX_DEVICE SDCARD
+//TODO #define DSHOT_BURST ON
+//TODO #define CURRENT_METER ESC
+//TODO #define BATTERY_METER ADC
+//TODO #define VBAT_SCALE 110
+//TODO #define IBATA_SCALE 100
+#define BEEPER_INVERTED
+//TODO #define BEEPER_OD OFF
+#define USE_SDCARD_SPI
+#define SDCARD_SPI_INSTANCE SPI3
+//TODO #define OSD_VBAT_POS 384
+//TODO #define OSD_RSSI_POS 2426
+//TODO #define OSD_TIM_1_POS 53
+//TODO #define OSD_TIM_2_POS 2455
+//TODO #define OSD_FLYMODE_POS 2420
+//TODO #define OSD_THROTTLE_POS 2400
+//TODO #define OSD_VTX_CHANNEL_POS 34
+//TODO #define OSD_CROSSHAIRS_POS 236
+//TODO #define OSD_AH_POS 199
+//TODO #define OSD_CURRENT_POS 2440
+//TODO #define OSD_MAH_DRAWN_POS 2448
+//TODO #define OSD_CRAFT_NAME_POS 2048
+//TODO #define OSD_DISPLAY_NAME_POS 490
+//TODO #define OSD_GPS_SPEED_POS 271
+//TODO #define OSD_GPS_LON_POS 82
+//TODO #define OSD_GPS_LAT_POS 65
+//TODO #define OSD_GPS_SATS_POS 1410
+//TODO #define OSD_HOME_DIR_POS 302
+//TODO #define OSD_HOME_DIST_POS 303
+//TODO #define OSD_COMPASS_BAR_POS 265
+//TODO #define OSD_ALTITUDE_POS 246
+//TODO #define OSD_PID_ROLL_POS 135
+//TODO #define OSD_PID_PITCH_POS 167
+//TODO #define OSD_PID_YAW_POS 199
+//TODO #define OSD_DEBUG_POS 0
+//TODO #define OSD_POWER_POS 320
+//TODO #define OSD_PIDRATE_PROFILE_POS 344
+//TODO #define OSD_WARNINGS_POS 2406
+//TODO #define OSD_AVG_CELL_VOLTAGE_POS 2432
+//TODO #define OSD_PIT_ANG_POS 256
+//TODO #define OSD_ROL_ANG_POS 288
+//TODO #define OSD_BATTERY_USAGE_POS 391
+//TODO #define OSD_DISARMED_POS 75
+//TODO #define OSD_NHEADING_POS 310
+//TODO #define OSD_NVARIO_POS 278
+//TODO #define OSD_ESC_TMP_POS 82
+//TODO #define OSD_ESC_RPM_POS 83
+//TODO #define OSD_STAT_MAX_SPD OFF
+#define MAX7456_SPI_INSTANCE SPI2
+//TODO #define PINIO_CONFIG 129,1,1,1
+//TODO #define PINIO_BOX 0,255,255,255
+#define FLASH_SPI_INSTANCE SPI3
+#define USE_SPI_GYRO
+#define GYRO_1_SPI_INSTANCE SPI1
+#define GYRO_2_SPI_INSTANCE SPI1
+#define GYRO_2_ALIGN CW90_DEG
+#define GYRO_2_ALIGN_YAW 900

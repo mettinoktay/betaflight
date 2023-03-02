@@ -22,7 +22,7 @@
 /*
    This file has been auto generated from unified-targets repo.
 
-   The auto generation is transitional only.
+   The auto generation is transitional only, please remove this comment once the file is edited.
 */
 
 #define FC_TARGET_MCU     STM32F405
@@ -36,3 +36,77 @@
 #define USE_ACC_SPI_MPU6000
 #define USE_MAX7456
 #define USE_SDCARD
+
+#define BEEPER_PIN           PB4
+#define MOTOR1_PIN           PB0
+#define MOTOR2_PIN           PB1
+#define MOTOR3_PIN           PA3
+#define MOTOR4_PIN           PA2
+#define MOTOR5_PIN           PB8
+#define LED_STRIP_PIN        PB8
+#define UART1_TX_PIN         PA9
+#define UART3_TX_PIN         PB10
+#define UART4_TX_PIN         PA0
+#define UART6_TX_PIN         PC6
+#define UART1_RX_PIN         PA10
+#define UART3_RX_PIN         PB11
+#define UART4_RX_PIN         PA1
+#define UART6_RX_PIN         PC7
+#define INVERTER1_PIN        PC0
+#define LED0_PIN             PB5
+#define SPI1_SCK_PIN         PA5
+#define SPI2_SCK_PIN         PB13
+#define SPI3_SCK_PIN         PC10
+#define SPI1_MISO_PIN        PA6
+#define SPI2_MISO_PIN        PB14
+#define SPI3_MISO_PIN        PC11
+#define SPI1_MOSI_PIN        PA7
+#define SPI2_MOSI_PIN        PB15
+#define SPI3_MOSI_PIN        PC12
+#define CAMERA_CONTROL_PIN   PB9
+#define ADC_VBAT_PIN         PC2
+#define ADC_RSSI_PIN         PC3
+#define ADC_CURR_PIN         PC1
+#define SDCARD_CS_PIN        PB12
+#define SDCARD_DETECT_PIN    PB7
+#define PINIO1_PIN           PA14
+#define FLASH_CS_PIN         PB3
+#define MAX7456_SPI_CS_PIN   PA15
+#define GYRO_1_EXTI_PIN      PC4
+#define GYRO_1_CS_PIN        PA4
+#define USB_DETECT_PIN       PC5
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP( 0, PB9 , 2, -1) \
+    TIMER_PIN_MAP( 1, PB0 , 1,  0) \
+    TIMER_PIN_MAP( 2, PB1 , 3,  0) \
+    TIMER_PIN_MAP( 3, PA3 , 1,  1) \
+    TIMER_PIN_MAP( 4, PA2 , 1,  0) \
+    TIMER_PIN_MAP( 5, PB4 , 1,  0) \
+    TIMER_PIN_MAP( 6, PB8 , 1,  0) \
+
+
+
+#define SPI2_TX_DMA_OPT     0
+#define ADC1_DMA_OPT        1
+
+//TODO #define BLACKBOX_DEVICE SDCARD
+//TODO #define MOTOR_PWM_PROTOCOL DSHOT600
+//TODO #define PINIO_CONFIG 1,1,1,1
+//TODO #define PINIO_BOX 40,255,255,255
+//TODO #define CURRENT_METER ADC
+//TODO #define BATTERY_METER ADC
+//TODO #define IBATA_SCALE 250
+#define BEEPER_INVERTED
+//TODO #define BEEPER_OD OFF
+#define BEEPER_PWM_HZ 3800
+#define USE_SDCARD_SPI
+#define SDCARD_SPI_INSTANCE SPI2
+#define SYSTEM_HSE_MHZ 8
+#define MAX7456_SPI_INSTANCE SPI3
+#define FLASH_SPI_INSTANCE SPI3
+//TODO #define PID_PROCESS_DENOM 1
+#define USE_SPI_GYRO
+#define GYRO_1_SPI_INSTANCE SPI1
+#define GYRO_1_ALIGN CW0_DEG
+#define GYRO_2_SPI_INSTANCE SPI1

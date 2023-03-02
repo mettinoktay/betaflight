@@ -22,7 +22,7 @@
 /*
    This file has been auto generated from unified-targets repo.
 
-   The auto generation is transitional only.
+   The auto generation is transitional only, please remove this comment once the file is edited.
 */
 
 #define FC_TARGET_MCU     STM32F405
@@ -35,3 +35,93 @@
 #define USE_ACC_SPI_MPU6000
 #define USE_GYRO_SPI_MPU6000
 #define USE_MAX7456
+
+#define BEEPER_PIN           PB4
+#define MOTOR1_PIN           PB0
+#define MOTOR2_PIN           PB1
+#define MOTOR3_PIN           PA3
+#define MOTOR4_PIN           PA2
+#define RX_PPM_PIN           PB6
+#define LED_STRIP_PIN        PB6
+#define UART1_TX_PIN         PA9
+#define UART3_TX_PIN         PB10
+#define UART4_TX_PIN         PA0
+#define UART6_TX_PIN         PC6
+#define UART11_TX_PIN        PC9
+#define UART1_RX_PIN         PA10
+#define UART3_RX_PIN         PB11
+#define UART4_RX_PIN         PA1
+#define UART6_RX_PIN         PC7
+#define UART12_RX_PIN        PA8
+#define INVERTER1_PIN        PC0
+#define I2C1_SCL_PIN         PB8
+#define I2C1_SDA_PIN         PB9
+#define LED0_PIN             PB5
+#define SPI1_SCK_PIN         PA5
+#define SPI2_SCK_PIN         PB13
+#define SPI3_SCK_PIN         PC10
+#define SPI1_MISO_PIN        PA6
+#define SPI2_MISO_PIN        PB14
+#define SPI3_MISO_PIN        PC11
+#define SPI1_MOSI_PIN        PA7
+#define SPI2_MOSI_PIN        PB15
+#define SPI3_MOSI_PIN        PC12
+#define CAMERA_CONTROL_PIN   PB7
+#define ADC_VBAT_PIN         PC2
+#define ADC_CURR_PIN         PC1
+#define PINIO1_PIN           PC13
+#define PINIO2_PIN           PC14
+#define FLASH_CS_PIN         PB3
+#define MAX7456_SPI_CS_PIN   PC8
+#define GYRO_1_EXTI_PIN      PC4
+#define GYRO_1_CS_PIN        PA4
+#define USB_DETECT_PIN       PC5
+
+#define TIMER_PIN_MAPPING \
+    TIMER_PIN_MAP( 0, PB0 , 2,  0) \
+    TIMER_PIN_MAP( 1, PB1 , 2,  0) \
+    TIMER_PIN_MAP( 2, PA3 , 1,  1) \
+    TIMER_PIN_MAP( 3, PA2 , 1,  0) \
+    TIMER_PIN_MAP( 4, PA8 , 1,  0) \
+    TIMER_PIN_MAP( 5, PC9 , 2,  0) \
+    TIMER_PIN_MAP( 6, PB6 , 1,  0) \
+    TIMER_PIN_MAP( 7, PB7 , 1,  0) \
+
+
+
+#define ADC1_DMA_OPT        1
+
+//TODO #define MAG_HARDWARE NONE
+//TODO #define BARO_BUSTYPE I2C
+#define BARO_I2C_INSTANCE (I2CDEV_1)
+//TODO #define SERIALRX_PROVIDER SBUS
+//TODO #define SERIALRX_HALFDUPLEX ON
+//TODO #define DSHOT_BURST ON
+//TODO #define MOTOR_PWM_PROTOCOL DSHOT600
+//TODO #define CURRENT_METER ADC
+//TODO #define BATTERY_METER ADC
+//TODO #define PID_PROCESS_DENOM 1
+//TODO #define OSD_WARN_CORE_TEMP OFF
+//TODO #define OSD_WARN_RC_SMOOTHING OFF
+//TODO #define OSD_WARN_FAIL_SAFE OFF
+//TODO #define OSD_WARN_LAUNCH_CONTROL OFF
+//TODO #define OSD_WARN_NO_GPS_RESCUE OFF
+//TODO #define OSD_WARN_GPS_RESCUE_DISABLED OFF
+//TODO #define OSD_VBAT_POS 2401
+//TODO #define OSD_RSSI_POS 2106
+//TODO #define OSD_VTX_CHANNEL_POS 2424
+//TODO #define OSD_CROSSHAIRS_POS 2253
+//TODO #define OSD_AH_SBAR_POS 2254
+//TODO #define OSD_AH_POS 2126
+//TODO #define OSD_COMPASS_BAR_POS 106
+//TODO #define OSD_WARNINGS_POS 2377
+#define SYSTEM_HSE_MHZ 8
+//TODO #define VCD_VIDEO_SYSTEM NTSC
+#define MAX7456_SPI_INSTANCE SPI2
+//TODO #define DASHBOARD_I2C_BUS 1
+//TODO #define PINIO_BOX 40,41,255,255
+#define FLASH_SPI_INSTANCE SPI3
+#define USE_SPI_GYRO
+#define GYRO_1_SPI_INSTANCE SPI1
+#define GYRO_1_ALIGN CW0_DEG
+#define GYRO_2_SPI_INSTANCE SPI1

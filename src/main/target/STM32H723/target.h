@@ -20,8 +20,6 @@
 
 #pragma once
 
-#include "drivers/stm32/platform_stm32.h"
-
 #ifndef TARGET_BOARD_IDENTIFIER
 #define TARGET_BOARD_IDENTIFIER "SH72"
 #endif
@@ -102,3 +100,5 @@
 
 #define USE_EXTI
 #define USE_TIMER_UP_CONFIG
+
+#define FLASH_PAGE_SIZE ((uint32_t)0x20000) // 128K sectors
