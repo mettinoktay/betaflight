@@ -19,11 +19,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-   This file has been auto generated from unified-targets repo.
-
-   The auto generation is transitional only, please remove this comment once the file is edited.
-*/
+#pragma once
 
 #define FC_TARGET_MCU     STM32F745
 
@@ -110,7 +106,7 @@
     TIMER_PIN_MAP(12, PB9 , 1, -1) \
     TIMER_PIN_MAP(13, PE6 , 1, -1) \
     TIMER_PIN_MAP(14, PB3 , 1,  0) \
-    TIMER_PIN_MAP(15, PB4 , 1,  0) \
+    TIMER_PIN_MAP(15, PB4 , 1,  0)
 
 
 
@@ -123,7 +119,6 @@
 #define BARO_I2C_INSTANCE (I2CDEV_2)
 //TODO #define BLACKBOX_DEVICE SDCARD
 #define BEEPER_INVERTED
-//TODO #define BEEPER_OD OFF
 //TODO #define SDCARD_DETECT_INVERTED ON
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI4

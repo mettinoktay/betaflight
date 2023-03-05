@@ -19,11 +19,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-   This file has been auto generated from unified-targets repo.
-
-   The auto generation is transitional only, please remove this comment once the file is edited.
-*/
+#pragma once
 
 #define FC_TARGET_MCU     STM32F411
 
@@ -94,7 +90,7 @@
     TIMER_PIN_MAP( 1, PB8 , 1,  0) \
     TIMER_PIN_MAP( 2, PA0 , 1,  0) \
     TIMER_PIN_MAP( 3, PB10, 1,  0) \
-    TIMER_PIN_MAP( 4, PB7 , 1,  0) \
+    TIMER_PIN_MAP( 4, PB7 , 1,  0)
 
 
 
@@ -108,7 +104,6 @@
 //TODO #define BATTERY_METER ADC
 //TODO #define IBATA_SCALE 165
 #define BEEPER_INVERTED
-//TODO #define BEEPER_OD OFF
 #define MAX7456_SPI_INSTANCE SPI2
 //TODO #define LED_INVERSION 1
 #define FLASH_SPI_INSTANCE SPI2

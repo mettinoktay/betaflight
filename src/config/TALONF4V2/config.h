@@ -19,12 +19,6 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-   This file has been auto generated from unified-targets repo.
-
-   The auto generation is transitional only, please remove this comment once the file is edited.
-*/
-
 #define FC_TARGET_MCU     STM32F405
 
 #define BOARD_NAME        TALONF4V2
@@ -76,19 +70,19 @@
 
 #define TIMER_PIN_MAPPING \
     TIMER_PIN_MAP( 0, PB9 , 2, -1) \
-    TIMER_PIN_MAP( 1, PB0 , 1, 0   # pin B00: DMA2 Stream 6 Channel 0) \
-    TIMER_PIN_MAP( 2, PB1 , 3, 0   # pin B01: DMA2 Stream 2 Channel 0) \
-    TIMER_PIN_MAP( 3, PA3 , 1, 1   # pin A03: DMA1 Stream 6 Channel 3) \
-    TIMER_PIN_MAP( 4, PA2 , 1, 0   # pin A02: DMA1 Stream 1 Channel 3) \
-    TIMER_PIN_MAP( 5, PB4 , 1, 0   # pin B04: DMA1 Stream 4 Channel 5) \
-    TIMER_PIN_MAP( 6, PB8 , 1, 0   # pin B08: DMA1 Stream 7 Channel 2) \
+    TIMER_PIN_MAP( 1, PB0 , 1, 0 ) \
+    TIMER_PIN_MAP( 2, PB1 , 3, 0 ) \
+    TIMER_PIN_MAP( 3, PA3 , 1, 1 ) \
+    TIMER_PIN_MAP( 4, PA2 , 1, 0 ) \
+    TIMER_PIN_MAP( 5, PB4 , 1, 0 ) \
+    TIMER_PIN_MAP( 6, PB8 , 1, 0 ) \
 
 
 
 #define SPI2_TX_DMA_OPT     0
 #define ADC1_DMA_OPT        1
 
-//TODO #define SERIALRX_PROVIDER SBUS
+
 //TODO #define MAG_HARDWARE NONE
 //TODO #define BARO_HARDWARE NONE
 //TODO #define MOTOR_PWM_PROTOCOL DSHOT600
@@ -104,7 +98,6 @@
 //TODO #define BATTERY_METER ADC
 //TODO #define IBATA_SCALE 250
 #define BEEPER_INVERTED
-//TODO #define BEEPER_OD OFF
 #define BEEPER_PWM_HZ 0
 #define SYSTEM_HSE_MHZ 8
 //TODO #define VTX_SPI_BUS 0

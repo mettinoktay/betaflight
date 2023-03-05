@@ -19,11 +19,7 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-/*
-   This file has been auto generated from unified-targets repo.
-
-   The auto generation is transitional only, please remove this comment once the file is edited.
-*/
+#pragma once
 
 #define FC_TARGET_MCU     STM32F405
 
@@ -96,7 +92,7 @@
     TIMER_PIN_MAP( 9, PA2 , 1,  0) \
     TIMER_PIN_MAP(10, PA1 , 2,  0) \
     TIMER_PIN_MAP(11, PA8 , 1,  0) \
-    TIMER_PIN_MAP(12, PB6 , 1,  0) \
+    TIMER_PIN_MAP(12, PB6 , 1,  0)
 
 
 
@@ -106,7 +102,6 @@
 #define MAG_I2C_INSTANCE (I2CDEV_2)
 #define BARO_SPI_INSTANCE SPI1
 #define BEEPER_INVERTED
-//TODO #define BEEPER_OD OFF
 #define SYSTEM_HSE_MHZ 8
 //TODO #define DASHBOARD_I2C_BUS 2
 #define FLASH_SPI_INSTANCE SPI3
