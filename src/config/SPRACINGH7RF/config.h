@@ -19,17 +19,17 @@
  * If not, see <http://www.gnu.org/licenses/>.
  */
 
-#define FC_TARGET_MCU     STM32H730
+#define FC_TARGET_MCU           STM32H730
 
-#define BOARD_NAME        SPRACINGH7RF
-#define MANUFACTURER_ID   SPRO
+#define BOARD_NAME              SPRACINGH7RF
+#define MANUFACTURER_ID         SPRO
 
 #define TARGET_BOARD_IDENTIFIER "SP7R"
-#define USBD_PRODUCT_STRING "SPRacingH7RF"
+#define USBD_PRODUCT_STRING     "SPRacingH7RF"
 
-#define FC_VMA_ADDRESS    0x90100000
+#define FC_VMA_ADDRESS          0x90100000
 
-#define EEPROM_SIZE 8192
+#define EEPROM_SIZE             8192
 
 #define USE_SPRACING_PERSISTENT_RTC_WORKAROUND
 
@@ -77,14 +77,14 @@
 #define SDIO_D2_PIN             PC10
 #define SDIO_D3_PIN             PC11
 
-#define TARGET_IO_PORTA 0xffff
-#define TARGET_IO_PORTB (0xffff & ~(BIT(2)|BIT(6)))
-#define TARGET_IO_PORTC 0xffff
-#define TARGET_IO_PORTD (0xffff & ~(BIT(11)|BIT(12)|BIT(13)))
-#define TARGET_IO_PORTE (0xffff & ~(BIT(2)|BIT(7)|BIT(8)|BIT(9)|BIT(10)))
-#define TARGET_IO_PORTF 0xffff
-#define TARGET_IO_PORTG 0xffff
-#define TARGET_IO_PORTH 0xffff
+#define TARGET_IO_PORTA         0xffff
+#define TARGET_IO_PORTB         (0xffff & ~(BIT(2)|BIT(6)))
+#define TARGET_IO_PORTC         0xffff
+#define TARGET_IO_PORTD         (0xffff & ~(BIT(11)|BIT(12)|BIT(13)))
+#define TARGET_IO_PORTE         (0xffff & ~(BIT(2)|BIT(7)|BIT(8)|BIT(9)|BIT(10)))
+#define TARGET_IO_PORTF         0xffff
+#define TARGET_IO_PORTG         0xffff
+#define TARGET_IO_PORTH         0xffff
 
 #define USE_I2C
 #define USE_I2C_DEVICE_1
@@ -96,6 +96,7 @@
 #define I2C2_SDA_PIN            PB11
 
 #define MAG_I2C_INSTANCE        (I2CDEV_1)
+#define USE_BARO
 #define BARO_I2C_INSTANCE       (I2CDEV_2)
 
 #define USE_MPU_DATA_READY_SIGNAL
@@ -111,17 +112,18 @@
 #define USE_RX_SPI
 #define USE_RX_EXPRESSLRS
 #define USE_RX_SX1280
-#define RX_SPI_INSTANCE                                 SPI2
-#define RX_NSS_PIN                                      SPI2_NSS_PIN
-#define RX_SPI_EXTI_PIN                                 SX1280_DIO1_PIN
-#define RX_EXPRESSLRS_SPI_RESET_PIN                     SX1280_NRESET_PIN
-#define RX_EXPRESSLRS_SPI_BUSY_PIN                      SX1280_BUSY_PIN
-#define RX_EXPRESSLRS_TIMER_INSTANCE                    TIM6
+#define RX_SPI_INSTANCE               SPI2
+#define RX_NSS_PIN                    SPI2_NSS_PIN
+#define RX_SPI_EXTI_PIN               SX1280_DIO1_PIN
+#define RX_EXPRESSLRS_SPI_RESET_PIN   SX1280_NRESET_PIN
+#define RX_EXPRESSLRS_SPI_BUSY_PIN    SX1280_BUSY_PIN
+#define RX_EXPRESSLRS_TIMER_INSTANCE  TIM6
 
-#define DEFAULT_RX_FEATURE      FEATURE_RX_SPI
-#define RX_SPI_DEFAULT_PROTOCOL RX_SPI_EXPRESSLRS
+#define DEFAULT_RX_FEATURE            FEATURE_RX_SPI
+#define RX_SPI_DEFAULT_PROTOCOL       RX_SPI_EXPRESSLRS
+#define RX_SPI_PROTOCOL               EXPRESSLRS
 
-#define ADC3_DMA_OPT 10
+#define ADC3_DMA_OPT                  10
 #define ADC_INSTANCE                  ADC3
 #define ADC1_INSTANCE                 ADC1
 #define ADC3_INSTANCE                 ADC3
@@ -129,27 +131,32 @@
 #define CURRENT_METER_2_ADC_INSTANCE  ADC3
 #define CURRENT_METER_1_ADC_PIN       PC1
 #define CURRENT_METER_1_ADC_INSTANCE  ADC3
-#define EXTERNAL1_ADC_PIN             PC2
-#define EXTERNAL1_ADC_INSTANCE        ADC3
+#define ADC_EXTERNAL1_PIN             PC2
+#define ADC_EXTERNAL1_INSTANCE        ADC3
 #define VBAT_ADC_PIN                  PC3
 #define VBAT_ADC_INSTANCE             ADC3
 #define VIDEO_IN_ADC_PIN              PC5
 #define VIDEO_OUT_ADC_PIN             PC4
+
 #define RSSI_ADC_PIN                  CURRENT_METER_2_ADC_PIN
 #define RSSI_ADC_INSTANCE             CURRENT_METER_2_ADC_INSTANCE
 #define CURRENT_METER_ADC_PIN         CURRENT_METER_1_ADC_PIN
 #define CURRENT_METER_ADC_INSTANCE    CURRENT_METER_1_ADC_INSTANCE
-#define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
-#define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
+#define DEFAULT_VOLTAGE_METER_SOURCE  VOLTAGE_METER_ADC
+#define DEFAULT_CURRENT_METER_SOURCE  CURRENT_METER_ADC
 
-#define VTX_ENABLE_PIN          PC15
-#define PINIO1_PIN              VTX_ENABLE_PIN
+#define VTX_ENABLE_PIN                PC15
+#define PINIO1_PIN                    VTX_ENABLE_PIN
 
+#define USE_ACC
 #define USE_ACC_SPI_ICM42605
 #define USE_ACC_SPI_ICM42688P
+#define USE_GYRO
 #define USE_GYRO_SPI_ICM42605
 #define USE_GYRO_SPI_ICM42688P
+#define USE_BARO
 #define USE_BARO_BMP388
+#define USE_MAG
 #define USE_MAG_HMC5883
 #define USE_MAG_QMC5883
 #define USE_FLASH_W25Q128FV
@@ -165,19 +172,14 @@
 #define SPRACING_PIXEL_OSD_WHITE_SOURCE_SELECT_PIN      PE15
 
 #define SPRACING_PIXEL_OSD_SYNC_IN_PIN                  PE11
-
 #define SPRACING_PIXEL_OSD_SYNC_OUT_PIN                 PA8
 
 #define SPRACING_PIXEL_OSD_WHITE_SOURCE_PIN             PA4
-
 #define SPRACING_PIXEL_OSD_VIDEO_THRESHOLD_DEBUG_PIN    PA5
 
 #define SPRACING_PIXEL_OSD_PIXEL_DEBUG_1_PIN            PE5
-
 #define SPRACING_PIXEL_OSD_PIXEL_DEBUG_2_PIN            PE6
-
 #define SPRACING_PIXEL_OSD_PIXEL_GATING_DEBUG_PIN       PB0
-
 #define SPRACING_PIXEL_OSD_PIXEL_BLANKING_DEBUG_PIN     PB1
 
 #define BEEPER_PIN           PE4
@@ -255,24 +257,16 @@
 
 #define ADC3_DMA_OPT       10
 
-//TODO #define MAG_BUSTYPE I2C
-#define MAG_I2C_INSTANCE (I2CDEV_1)
-
-//TODO #define BARO_BUSTYPE I2C
-#define BARO_I2C_INSTANCE (I2CDEV_2)
+#define MAG_I2C_INSTANCE     (I2CDEV_1)
+#define BARO_I2C_INSTANCE    (I2CDEV_2)
 
 //TODO #define ADC_DEVICE 3
+#define PINIO1_BOX 40
 
-//TODO #define RX_SPI_PROTOCOL EXPRESSLRS
-#define RX_SPI_INSTANCE SPI2
+#define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_SDCARD
 
-//TODO #define PINIO_CONFIG 1,1,1,1
-//TODO #define PINIO_BOX 40,255,255,255
-
-#define ENABLE_BLACKBOX_LOGGING_ON_SDCARD_BY_DEFAULT
-
-//TODO #define CURRENT_METER ADC
-//TODO #define BATTERY_METER ADC
+#define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
+#define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
 
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI6

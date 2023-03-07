@@ -26,7 +26,9 @@
 #define BOARD_NAME        REVOLTOSD
 #define MANUFACTURER_ID   FLON
 
+#define USE_ACC
 #define USE_ACC_SPI_MPU6500
+#define USE_GYRO
 #define USE_GYRO_SPI_MPU6500
 #define USE_MAX7456
 
@@ -72,13 +74,12 @@
     TIMER_PIN_MAP( 2, PB1 , 3,  0) \
     TIMER_PIN_MAP( 3, PA3 , 1,  0) \
     TIMER_PIN_MAP( 4, PA2 , 1,  0) \
-    TIMER_PIN_MAP( 5, PB6 , 1,  0) \
-
+    TIMER_PIN_MAP( 5, PB6 , 1,  0)
 
 
 #define ADC1_DMA_OPT        1
 
-//TODO #define DSHOT_BURST ON
+#define ENABLE_DSHOT_DMAR DSHOT_DMAR_ON
 #define SYSTEM_HSE_MHZ 8
 #define MAX7456_SPI_INSTANCE SPI2
 //TODO #define DASHBOARD_I2C_BUS 1

@@ -28,7 +28,9 @@
 
 #define LED0_PIN                PB5
 
+#define USE_GYRO
 #define USE_GYRO_SPI_MPU6000
+#define USE_ACC
 #define USE_ACC_SPI_MPU6000
 #define GYRO_1_CS_PIN           PA4
 #define GYRO_1_SPI_INSTANCE     SPI1
@@ -48,13 +50,17 @@
 #define  SPI3_MOSI_PIN          PC12
 
 #define USE_FLASH_M25P16
+#define FLASH_CS_PIN            PB3
+#define FLASH_SPI_INSTANCE      SPI3
 
-#define I2C1_SCL_PIN         PB8
-#define I2C1_SDA_PIN         PB9
+#define I2C1_SCL_PIN            PB8
+#define I2C1_SDA_PIN            PB9
 
-#define I2C2_SCL_PIN         PB10
-#define I2C2_SDA_PIN         PB11
+#define I2C2_SCL_PIN            PB10
+#define I2C2_SDA_PIN            PB11
 
-#define BARO_I2C_INSTANCE I2C2
+#define USE_MAG
+#define MAG_I2C_INSTANCE        I2C1
+
 #define USE_BARO
-#define USE_BARO_MS5611
+#define BARO_I2C_INSTANCE       I2C1
