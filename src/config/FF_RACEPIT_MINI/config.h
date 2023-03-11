@@ -28,6 +28,7 @@
 #define USE_ACC_SPI_MPU6000
 #define USE_GYRO
 #define USE_GYRO_SPI_MPU6000
+#define USE_FLASH
 #define USE_FLASH_W25Q128FV
 #define USE_MAX7456
 
@@ -83,7 +84,7 @@
 
 #define ADC2_DMA_OPT        1
 
-#define ENABLE_DSHOT_DMAR DSHOT_DMAR_ON
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_ON
 //TODO #define MOTOR_PWM_PROTOCOL Dshot600
 
 #define UART1_TX_PIN         PA9
@@ -94,7 +95,7 @@
 
 #define UART3_TX_PIN         PC10
 #define UART3_RX_PIN         PC11
-#define INVERTER3_PIN        PC15
+#define INVERTER_PIN_UART3   PC15
 
 #define UART4_TX_PIN         PA0
 #define UART4_RX_PIN         PA1

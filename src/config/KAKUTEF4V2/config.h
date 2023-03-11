@@ -33,6 +33,7 @@
 #define USE_GYRO_SPI_ICM20689
 #define USE_ACC_SPI_ICM20689
 #define USE_BARO_BMP280
+#define USE_FLASH
 #define USE_FLASH_W25Q128FV
 #define USE_MAX7456
 
@@ -52,7 +53,7 @@
 #define UART4_RX_PIN         PA1
 #define UART5_RX_PIN         PD2
 #define UART6_RX_PIN         PC7
-#define INVERTER3_PIN        PB15
+#define INVERTER_PIN_UART3   PB15
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PB5
@@ -98,7 +99,7 @@
 #define SYSTEM_HSE_MHZ 8
 #define MAX7456_SPI_INSTANCE SPI3
 //TODO #define MAX7456_PREINIT_OPU ON
-//TODO #define DASHBOARD_I2C_BUS 1
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_1)
 #define FLASH_SPI_INSTANCE SPI3
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

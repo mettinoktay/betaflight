@@ -46,7 +46,7 @@
 #define UART1_RX_PIN         PA10
 #define UART3_RX_PIN         PB11
 #define UART6_RX_PIN         PC7
-#define INVERTER6_PIN        PC8
+#define INVERTER_PIN_UART6   PC8
 #define LED0_PIN             PC13
 #define LED1_PIN             PC14
 #define SPI1_SCK_PIN         PA5
@@ -62,7 +62,7 @@
 #define ADC_VBAT_PIN         PC0
 #define ADC_RSSI_PIN         PC1
 #define ADC_CURR_PIN         PA1
-#define SDCARD_CS_PIN        PB9
+#define SDCARD_SPI_CS_PIN    PB9
 #define SDCARD_DETECT_PIN    PB7
 #define FLASH_CS_PIN         PD2
 #define MAX7456_SPI_CS_PIN   PB12
@@ -89,7 +89,7 @@
 #define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
 #define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
 #define BEEPER_INVERTED
-//TODO #define SDCARD_DETECT_INVERTED ON
+#define SDCARD_DETECT_INVERTED
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI3
 #define SYSTEM_HSE_MHZ 8

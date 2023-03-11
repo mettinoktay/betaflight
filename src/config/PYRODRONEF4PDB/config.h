@@ -30,6 +30,7 @@
 #define USE_GYRO_SPI_MPU6000
 #define USE_ACC
 #define USE_ACC_SPI_MPU6000
+#define USE_FLASH
 #define USE_FLASH_W25Q128FV
 #define USE_MAX7456
 
@@ -51,7 +52,7 @@
 #define UART4_RX_PIN         PA1
 #define UART5_RX_PIN         PD2
 #define UART6_RX_PIN         PC7
-#define INVERTER1_PIN        PC3
+#define INVERTER_PIN_UART1   PC3
 #define LED0_PIN             PB4
 #define SPI1_SCK_PIN         PA5
 #define SPI2_SCK_PIN         PB13

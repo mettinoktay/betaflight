@@ -24,30 +24,6 @@
 #define DEBUG_MODE DEBUG_NONE
 #endif
 
-// pg/flash
-
-#ifdef USE_FLASH_M25P16
-#ifndef FLASH_CS_PIN
-#define FLASH_CS_PIN                    NONE
-#endif
-
-#ifndef FLASH_SPI_INSTANCE
-#define FLASH_SPI_INSTANCE              NULL
-#endif
-#endif
-
-// pg/flash
-
-#ifdef USE_FLASH_M25P16
-#ifndef FLASH_CS_PIN
-#define FLASH_CS_PIN                    NONE
-#endif
-
-#ifndef FLASH_SPI_INSTANCE
-#define FLASH_SPI_INSTANCE              NULL
-#endif
-#endif
-
 #ifndef I2C1_CLOCKSPEED
 #define I2C1_CLOCKSPEED 800
 #endif
@@ -82,9 +58,6 @@
 #ifndef RX_SPI_DEFAULT_PROTOCOL
 #define RX_SPI_DEFAULT_PROTOCOL 0
 #endif
-#ifndef SERIALRX_PROVIDER
-#define SERIALRX_PROVIDER 0
-#endif
 
 #define RX_MIN_USEC 885
 #define RX_MAX_USEC 2115
@@ -96,29 +69,6 @@
 
 #ifndef BINDPLUG_PIN
 #define BINDPLUG_PIN NONE
-#endif
-
-#ifdef USE_RX_SPI
-#if !defined(RX_SPI_INSTANCE)
-#define RX_SPI_INSTANCE NULL
-#endif
-
-#if !defined(RX_NSS_PIN)
-#define RX_NSS_PIN NONE
-#endif
-
-#ifndef RX_SPI_LED_PIN
-#define RX_SPI_LED_PIN NONE
-#endif
-
-#if !defined(RX_SPI_EXTI_PIN)
-#define RX_SPI_EXTI_PIN NONE
-#endif
-
-#if !defined(RX_SPI_BIND_PIN)
-#define RX_SPI_BIND_PIN NONE
-#endif
-
 #endif
 
 // Previously there was logic here to default GYRO_1_CUSTOM_ALIGN and GYRO_2_CUSTOM_ALIGN
@@ -143,54 +93,6 @@
 #define MAX_TIMER_PINMAP_COUNT 21 // Largest known for F405RG (OMNINXT)
 #endif
 #endif
-
-#ifdef USE_SDCARD
-#ifndef SDCARD_DETECT_PIN
-#define SDCARD_DETECT_PIN NONE
-#endif
-#ifdef SDCARD_DETECT_INVERTED
-#define SDCARD_DETECT_IS_INVERTED 1
-#else
-#define SDCARD_DETECT_IS_INVERTED 0
-#endif
-#ifdef USE_SDCARD_SPI
-#ifndef SDCARD_SPI_INSTANCE
-#define SDCARD_SPI_INSTANCE NULL
-#endif
-#ifndef SDCARD_SPI_CS_PIN
-#define SDCARD_SPI_CS_PIN NONE
-#endif
-#endif // USE_SDCARD_SPI
-#ifdef USE_SDCARD_SDIO
-#ifndef SDCARD_SDIO_DMA_OPT
-#define SDCARD_SDIO_DMA_OPT (DMA_OPT_UNUSED)
-#endif
-#ifndef SDIO_DEVICE
-#define SDIO_DEVICE SDIOINVALID
-#endif
-#ifndef SDIO_USE_4BIT
-#define SDIO_USE_4BIT false
-#endif
-#ifndef SDIO_CK_PIN
-#define SDIO_CK_PIN NONE
-#endif
-#ifndef SDIO_CMD_PIN
-#define SDIO_CMD_PIN NONE
-#endif
-#ifndef SDIO_D0_PIN
-#define SDIO_D0_PIN NONE
-#endif
-#ifndef SDIO_D1_PIN
-#define SDIO_D1_PIN NONE
-#endif
-#ifndef SDIO_D2_PIN
-#define SDIO_D2_PIN NONE
-#endif
-#ifndef SDIO_D3_PIN
-#define SDIO_D3_PIN NONE
-#endif
-#endif // USE_SDCARD_SDIO
-#endif // USE_SDCARD
 
 #if defined(USE_UART1) || defined(USE_UART2) || defined(USE_UART3) || defined(USE_UART4) || defined(USE_UART5) || defined(USE_UART6) || defined(USE_UART7) || defined(USE_UART8)
 #define USE_UART
@@ -438,13 +340,3 @@
 #endif
 #define MAX_SUPPORTED_SERVOS 8
 #endif
-
-#if defined(USE_DSHOT_BITBANG)
-#if !defined(DSHOT_BITBANG_DEFAULT)
-#define DSHOT_BITBANG_DEFAULT DSHOT_BITBANG_AUTO
-#endif
-
-#if !defined(DSHOT_BITBANGED_TIMER_DEFAULT)
-#define DSHOT_BITBANGED_TIMER_DEFAULT DSHOT_BITBANGED_TIMER_AUTO
-#endif
-#endif // USE_DSHOT_BITBANG

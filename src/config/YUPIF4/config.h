@@ -53,8 +53,8 @@
 #define UART3_RX_PIN         PB11
 #define UART6_RX_PIN         PC7
 #define UART11_RX_PIN        PB1
-#define INVERTER1_PIN        PB12
-#define INVERTER6_PIN        PB15
+#define INVERTER_PIN_UART1   PB12
+#define INVERTER_PIN_UART6   PB15
 #define LED0_PIN             PB6
 #define LED1_PIN             PB4
 #define LED2_PIN             PB5
@@ -69,7 +69,7 @@
 #define ADC_VBAT_PIN         PC1
 #define ADC_RSSI_PIN         PC0
 #define ADC_CURR_PIN         PC2
-#define SDCARD_CS_PIN        PA15
+#define SDCARD_SPI_CS_PIN    PA15
 #define SDCARD_DETECT_PIN    PD2
 #define MAX7456_SPI_CS_PIN   PA14
 #define GYRO_1_EXTI_PIN      NONE
@@ -95,7 +95,7 @@
 #define DEFAULT_CURRENT_METER_SOURCE CURRENT_METER_ADC
 #define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
 #define DEFAULT_CURRENT_METER_SCALE 150
-//TODO #define SDCARD_DETECT_INVERTED ON
+#define SDCARD_DETECT_INVERTED
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI3
 #define SYSTEM_HSE_MHZ 8

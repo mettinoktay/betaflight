@@ -231,6 +231,10 @@ static const blackboxDeltaFieldDefinition_t blackboxMainFields[] = {
     {"debug",       1, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
     {"debug",       2, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
     {"debug",       3, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
+    {"debug",       4, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
+    {"debug",       5, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
+    {"debug",       6, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
+    {"debug",       7, SIGNED,   .Ipredict = PREDICT(0),       .Iencode = ENCODING(SIGNED_VB),   .Ppredict = PREDICT(AVERAGE_2),     .Pencode = ENCODING(SIGNED_VB), CONDITION(DEBUG_LOG)},
     /* Motors only rarely drops under minthrottle (when stick falls below mincommand), so predict minthrottle for it and use *unsigned* encoding (which is large for negative numbers but more compact for positive ones): */
     {"motor",       0, UNSIGNED, .Ipredict = PREDICT(MINMOTOR), .Iencode = ENCODING(UNSIGNED_VB), .Ppredict = PREDICT(AVERAGE_2), .Pencode = ENCODING(SIGNED_VB), CONDITION(AT_LEAST_MOTORS_1)},
     /* Subsequent motors base their I-frame values on the first one, P-frame values on the average of last two frames: */
@@ -1494,6 +1498,7 @@ static bool blackboxWriteSysinfo(void)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_DYN_IDLE_I_GAIN, "%d",         currentPidProfile->dyn_idle_i_gain);
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_DYN_IDLE_D_GAIN, "%d",         currentPidProfile->dyn_idle_d_gain);
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_DYN_IDLE_MAX_INCREASE, "%d",   currentPidProfile->dyn_idle_max_increase);
+        BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_DYN_IDLE_START_INCREASE, "%d", currentPidProfile->dyn_idle_start_increase);
 #endif
 
 #ifdef USE_SIMPLIFIED_TUNING
@@ -1532,12 +1537,14 @@ static bool blackboxWriteSysinfo(void)
 
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_RETURN_ALT, "%d",      gpsRescueConfig()->initialAltitudeM)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_RETURN_SPEED, "%d",    gpsRescueConfig()->rescueGroundspeed)
-        BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_PITCH_ANGLE_MAX, "%d", gpsRescueConfig()->angle)
+        BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_MAX_RESCUE_ANGLE, "%d", gpsRescueConfig()->maxRescueAngle)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_ROLL_MIX, "%d",        gpsRescueConfig()->rollMix)
+        BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_PITCH_CUTOFF, "%d",    gpsRescueConfig()->pitchCutoffHz)
 
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_DESCENT_DIST, "%d",    gpsRescueConfig()->descentDistanceM)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_DESCEND_RATE, "%d",    gpsRescueConfig()->descendRate)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_LANDING_ALT, "%d",     gpsRescueConfig()->targetLandingAltitudeM)
+        BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_DISARM_THRESHOLD, "%d", gpsRescueConfig()->disarmThreshold)
 
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_THROTTLE_MIN, "%d",    gpsRescueConfig()->throttleMin)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_THROTTLE_MAX, "%d",    gpsRescueConfig()->throttleMax)
@@ -1555,7 +1562,7 @@ static bool blackboxWriteSysinfo(void)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_VELOCITY_D, "%d",      gpsRescueConfig()->velD)
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_YAW_P, "%d",           gpsRescueConfig()->yawP)
 
- 
+
 #ifdef USE_MAG
         BLACKBOX_PRINT_HEADER_LINE(PARAM_NAME_GPS_RESCUE_USE_MAG, "%d",         gpsRescueConfig()->useMag)
 #endif

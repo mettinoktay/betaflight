@@ -31,6 +31,7 @@
 #define USE_GYRO
 #define USE_GYRO_SPI_MPU6000
 #define USE_BARO_MS5611
+#define USE_FLASH
 #define USE_FLASH_M25P16
 
 #define BEEPER_PIN           PC5
@@ -58,7 +59,7 @@
 #define UART1_RX_PIN         PB7
 #define UART2_RX_PIN         PA3
 #define UART3_RX_PIN         PB11
-#define INVERTER2_PIN        PB2
+#define INVERTER_PIN_UART2   PB2
 #define I2C3_SCL_PIN         PA8
 #define I2C3_SDA_PIN         PC9
 #define LED0_PIN             PC14
@@ -105,7 +106,7 @@
 #define BARO_I2C_INSTANCE (I2CDEV_3)
 #define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_FLASH
 #define SYSTEM_HSE_MHZ 16
-//TODO #define DASHBOARD_I2C_BUS 3
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_3)
 #define FLASH_SPI_INSTANCE SPI2
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

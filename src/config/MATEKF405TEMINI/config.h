@@ -32,6 +32,7 @@
 #define USE_ACC_SPI_ICM42688P
 #define USE_BARO_DPS310
 #define USE_MAX7456
+#define USE_FLASH
 #define USE_FLASH_M25P16
 
 #define BEEPER_PIN           PB9
@@ -66,18 +67,15 @@
 #define LED1_PIN             PA13
 #define SPI1_SCK_PIN         PA5
 #define SPI2_SCK_PIN         PB13
-#define SPI3_SCK_PIN         NONE
 #define SPI1_SDI_PIN         PB4
 #define SPI2_SDI_PIN         PC2
-#define SPI3_SDI_PIN         NONE
 #define SPI1_SDO_PIN         PA7
 #define SPI2_SDO_PIN         PC3
-#define SPI3_SDO_PIN         NONE
 #define ADC_VBAT_PIN         PC4
 #define ADC_RSSI_PIN         PB0
 #define ADC_CURR_PIN         PC5
 #define ADC_EXTERNAL1_PIN    PC0
-#define SDCARD_CS_PIN        PC1
+#define SDCARD_SPI_CS_PIN    PC1
 #define PINIO1_PIN           PA4
 #define PINIO2_PIN           PB5
 #define FLASH_CS_PIN         PC13
@@ -101,7 +99,6 @@
     TIMER_PIN_MAP(12, BEEPER_PIN, 2, -1) \
     TIMER_PIN_MAP(13, RX_PPM_PIN, 3, -1) \
     TIMER_PIN_MAP(14, UART2_TX_PIN, 2,  0)
-
 
 #define ADC1_DMA_OPT                    1
 
@@ -128,5 +125,6 @@
 #define GYRO_1_ALIGN_PITCH              1800
 #define GYRO_1_ALIGN_YAW                2700
 
+#define SERIALRX_UART                   SERIAL_PORT_USART2
 #define DEFAULT_RX_FEATURE              FEATURE_RX_SERIAL
 #define SERIALRX_PROVIDER               SERIALRX_CRSF

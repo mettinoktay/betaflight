@@ -55,7 +55,7 @@
 #define UART4_RX_PIN         PA1
 #define UART5_RX_PIN         PD2
 #define UART6_RX_PIN         PC7
-#define INVERTER3_PIN        PC15
+#define INVERTER_PIN_UART3   PC15
 #define I2C3_SCL_PIN         PA8
 #define I2C3_SDA_PIN         PC9
 #define LED0_PIN             PB5
@@ -92,7 +92,7 @@
 #define BEEPER_INVERTED
 #define SYSTEM_HSE_MHZ 8
 #define MAX7456_SPI_INSTANCE SPI2
-//TODO #define DASHBOARD_I2C_BUS 3
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_3)
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1
 #define GYRO_1_ALIGN CW180_DEG

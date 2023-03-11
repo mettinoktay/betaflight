@@ -34,6 +34,7 @@
 #define USE_GYRO_SPI_ICM42688P
 #define USE_ACC_SPI_ICM42688P
 #define USE_BARO_DPS310
+#define USE_FLASH
 #define USE_FLASH_W25N01G
 #define USE_MAX7456
 #define USE_SDCARD
@@ -70,7 +71,7 @@
 #define SPI3_SDO_PIN         PB5
 #define ADC_VBAT_PIN         PC1
 #define ADC_CURR_PIN         PC2
-#define SDCARD_CS_PIN        PB9
+#define SDCARD_SPI_CS_PIN    PB9
 #define PINIO1_PIN           PC13
 #define FLASH_CS_PIN         PB9
 #define MAX7456_SPI_CS_PIN   PB12

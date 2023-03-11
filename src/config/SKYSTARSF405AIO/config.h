@@ -30,6 +30,7 @@
 #define USE_ACC
 #define USE_ACCGYRO_BMI270
 #define USE_BARO_SPI_BMP280
+#define USE_FLASH
 #define USE_FLASH_W25Q128FV
 #define USE_MAX7456
 
@@ -54,7 +55,7 @@
 #define UART4_RX_PIN         PA1
 #define UART5_RX_PIN         PD2
 #define UART6_RX_PIN         PC7
-#define INVERTER3_PIN        PC3
+#define INVERTER_PIN_UART3   PC3
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PC14
@@ -99,7 +100,7 @@
 #define USE_ADC
 #define ADC_INSTANCE ADC2
 #define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_FLASH
-//TODO #define DSHOT_BURST AUTO
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_AUTO
 #define MAX7456_SPI_INSTANCE SPI2
 #define FLASH_SPI_INSTANCE SPI3
 #define USE_SPI_GYRO

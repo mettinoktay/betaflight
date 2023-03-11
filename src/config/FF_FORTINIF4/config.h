@@ -35,6 +35,7 @@
 #define USE_GYRO_SPI_MPU6500
 #define USE_GYRO_SPI_MPU6000
 #define USE_MAX7456
+#define USE_FLASH
 #define USE_FLASH_W25Q128FV
 
 #define BEEPER_PIN           PB4
@@ -54,7 +55,7 @@
 #define UART4_RX_PIN         PA1
 #define UART5_RX_PIN         PD2
 #define UART6_RX_PIN         PC7
-#define INVERTER3_PIN        PC15
+#define INVERTER_PIN_UART3   PC15
 #define LED0_PIN             PB5
 #define LED1_PIN             PB6
 #define SPI1_SCK_PIN         PA5

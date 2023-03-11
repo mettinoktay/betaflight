@@ -59,7 +59,7 @@
 #define UART3_RX_PIN         PB11
 #define UART4_RX_PIN         PC11
 #define UART5_RX_PIN         PD2
-#define INVERTER2_PIN        PB2
+#define INVERTER_PIN_UART2   PB2
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PA0
@@ -77,7 +77,7 @@
 #define ADC_VBAT_PIN         PC1
 #define ADC_RSSI_PIN         PC0
 #define ADC_CURR_PIN         PC2
-#define SDCARD_CS_PIN        PB12
+#define SDCARD_SPI_CS_PIN    PB12
 #define SDCARD_DETECT_PIN    PC14
 #define GYRO_1_EXTI_PIN      PC13
 #define GYRO_1_CS_PIN        PA4
@@ -114,11 +114,11 @@
 #define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_SDCARD
 #define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC
 #define BEEPER_INVERTED
-//TODO #define SDCARD_DETECT_INVERTED ON
+#define SDCARD_DETECT_INVERTED
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI2
 #define SYSTEM_HSE_MHZ 8
 //TODO #define VTX_SPI_BUS 3
-//TODO #define DASHBOARD_I2C_BUS 1
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_1)
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

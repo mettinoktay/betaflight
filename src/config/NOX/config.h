@@ -33,6 +33,7 @@
 #define USE_ACC_SPI_MPU6000
 #define USE_ACC_SPI_MPU6500
 #define USE_BARO_SPI_BMP280
+#define USE_FLASH
 #define USE_FLASH_M25P16
 #define USE_MAX7456
 
@@ -47,7 +48,7 @@
 #define UART2_TX_PIN         PA2
 #define UART1_RX_PIN         PB7
 #define UART2_RX_PIN         PA3
-#define INVERTER2_PIN        PC14
+#define INVERTER_PIN_UART2   PC14
 #define LED0_PIN             PA4
 #define SPI1_SCK_PIN         PB3
 #define SPI2_SCK_PIN         PB13

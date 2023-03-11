@@ -39,7 +39,7 @@
 #define UART2_TX_PIN         PA2
 #define UART1_RX_PIN         PA10
 #define UART2_RX_PIN         PA3
-#define INVERTER1_PIN        PA14
+#define INVERTER_PIN_UART1   PA14
 #define LED0_PIN             PC13
 #define LED1_PIN             PC14
 #define SPI1_SCK_PIN         PA5
@@ -71,9 +71,9 @@
 #define ADC1_DMA_OPT        1
 
 //TODO #define DSHOT_IDLE_VALUE 600
-//TODO #define DSHOT_BURST AUTO
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_AUTO
 //TODO #define DSHOT_BIDIR ON
-//TODO #define DSHOT_BITBANG OFF
+#define DEFAULT_DSHOT_BITBANG DSHOT_BITBANG_OFF
 //TODO #define MOTOR_PWM_PROTOCOL DSHOT300
 //TODO #define MOTOR_POLES 12
 //TODO #define VBAT_MAX_CELL_VOLTAGE 450

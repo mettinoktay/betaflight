@@ -49,7 +49,7 @@
 #define UART2_RX_PIN         PA3
 #define UART3_RX_PIN         PB11
 #define UART6_RX_PIN         PC7
-#define INVERTER2_PIN        PC13
+#define INVERTER_PIN_UART2   PC13
 #define LED0_PIN             PB5
 #define SPI1_SCK_PIN         PA5
 #define SPI2_SCK_PIN         PB13
@@ -99,7 +99,7 @@
 //TODO #define OSD_CROSSHAIRS_POS 14541
 #define SYSTEM_HSE_MHZ 8
 #define MAX7456_SPI_INSTANCE SPI2
-//TODO #define DASHBOARD_I2C_BUS 2
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_2)
 #define FLASH_SPI_INSTANCE SPI3
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

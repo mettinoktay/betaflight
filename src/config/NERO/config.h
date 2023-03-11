@@ -48,7 +48,7 @@
 #define SPI3_SDO_PIN         PC12
 #define GYRO_1_CS_PIN        PC4
 #define GYRO_1_EXTI_PIN      PB15
-#define SDCARD_CS_PIN        PA15
+#define SDCARD_SPI_CS_PIN    PA15
 #define SDCARD_DETECT_PIN    PD2
 #define MOTOR1_PIN           PA0
 #define MOTOR2_PIN           PA1
@@ -64,7 +64,7 @@
 #define UART6_RX_PIN         PC7
 #define ADC_VBAT_PIN         PC3
 #define ESCSERIAL_PIN        PC7
-#define SDCARD_CS_PIN        PA15
+#define SDCARD_SPI_CS_PIN    PA15
 #define SDCARD_DETECT_PIN    PD2
 
 #define TIMER_PIN_MAPPING \
@@ -81,12 +81,12 @@
 
 #define ADC1_DMA_OPT        1
 
-#define ENABLE_DSHOT_DMAR DSHOT_DMAR_ON
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_ON
 #define BEEPER_INVERTED
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1
 #define GYRO_1_ALIGN CW0_DEG
-//TODO #define SDCARD_DETECT_INVERTED ON
+#define SDCARD_DETECT_INVERTED
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI3
 #define DEFAULT_VOLTAGE_METER_SOURCE VOLTAGE_METER_ADC

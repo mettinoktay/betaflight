@@ -63,7 +63,7 @@
 #define UART3_RX_PIN         PB11
 #define UART4_RX_PIN         PA1
 #define UART6_RX_PIN         PC7
-#define INVERTER6_PIN        PD2
+#define INVERTER_PIN_UART6   PD2
 #define LED0_PIN             PB5
 #define SPI1_SCK_PIN         PA5
 #define SPI3_SCK_PIN         PC10
@@ -76,7 +76,7 @@
 #define ADC_RSSI_PIN         PA0
 #define ADC_CURR_PIN         PC1
 #define BARO_CS_PIN          PC13
-#define SDCARD_CS_PIN        PB3
+#define SDCARD_SPI_CS_PIN    PB3
 #define SDCARD_DETECT_PIN    PC0
 #define PINIO1_PIN           PC8
 #define GYRO_1_EXTI_PIN      PC4
@@ -110,11 +110,11 @@
 #define BARO_SPI_INSTANCE SPI1
 #define DEFAULT_BLACKBOX_DEVICE     BLACKBOX_DEVICE_SDCARD
 #define BEEPER_INVERTED
-//TODO #define SDCARD_DETECT_INVERTED ON
+#define SDCARD_DETECT_INVERTED
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI3
 #define SYSTEM_HSE_MHZ 8
-//TODO #define DASHBOARD_I2C_BUS 2
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_2)
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1
 #define GYRO_1_ALIGN CW270_DEG

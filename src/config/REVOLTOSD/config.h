@@ -46,7 +46,7 @@
 #define UART3_RX_PIN         PB11
 #define UART4_RX_PIN         PA1
 #define UART6_RX_PIN         PC7
-#define INVERTER1_PIN        PC0
+#define INVERTER_PIN_UART1   PC0
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PB5
@@ -79,10 +79,10 @@
 
 #define ADC1_DMA_OPT        1
 
-#define ENABLE_DSHOT_DMAR DSHOT_DMAR_ON
+#define DEFAULT_DSHOT_BURST DSHOT_DMAR_ON
 #define SYSTEM_HSE_MHZ 8
 #define MAX7456_SPI_INSTANCE SPI2
-//TODO #define DASHBOARD_I2C_BUS 1
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_1)
 #define FLASH_SPI_INSTANCE SPI2
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

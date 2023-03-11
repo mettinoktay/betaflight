@@ -27,6 +27,7 @@
 #define USE_GYRO
 #define USE_ACC
 #define USE_ACCGYRO_BMI270
+#define USE_FLASH
 #define USE_FLASH_W25M02G
 #define USE_MAX7456
 
@@ -122,7 +123,7 @@
 #define TIMUP5_DMA_OPT      0
 #define TIMUP8_DMA_OPT      0
 
-//TODO #define GYRO_TO_USE BOTH
+#define DEFAULT_GYRO_TO_USE GYRO_CONFIG_USE_GYRO_BOTH
 //TODO #define MAG_BUSTYPE I2C
 #define MAG_I2C_INSTANCE (I2CDEV_1)
 #define USE_BARO

@@ -32,6 +32,7 @@
 #define USE_GYRO_SPI_MPU6500
 #define USE_ACC_SPI_MPU6000
 #define USE_GYRO_SPI_MPU6000
+#define USE_FLASH
 #define USE_FLASH_M25P16
 
 #define MOTOR1_PIN           PB0
@@ -56,7 +57,7 @@
 #define UART3_RX_PIN         PB11
 #define UART4_RX_PIN         PA1
 #define UART6_RX_PIN         PC7
-#define INVERTER1_PIN        PC0
+#define INVERTER_PIN_UART1   PC0
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PB5
@@ -98,7 +99,7 @@
 #define USE_BARO
 #define BARO_I2C_INSTANCE (I2CDEV_1)
 #define SYSTEM_HSE_MHZ 8
-//TODO #define DASHBOARD_I2C_BUS 1
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_1)
 #define FLASH_SPI_INSTANCE SPI3
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

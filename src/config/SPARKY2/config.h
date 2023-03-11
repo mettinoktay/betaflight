@@ -51,7 +51,7 @@
 #define UART1_RX_PIN         PA10
 #define UART3_RX_PIN         PB11
 #define UART6_RX_PIN         PC7
-#define INVERTER6_PIN        PC6
+#define INVERTER_PIN_UART6   PC6
 #define I2C1_SCL_PIN         PB8
 #define I2C1_SDA_PIN         PB9
 #define LED0_PIN             PB5
@@ -92,7 +92,7 @@
 #define BARO_I2C_INSTANCE (I2CDEV_1)
 #define BEEPER_INVERTED
 #define SYSTEM_HSE_MHZ 8
-//TODO #define DASHBOARD_I2C_BUS 1
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_1)
 #define FLASH_SPI_INSTANCE SPI3
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1

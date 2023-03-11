@@ -60,7 +60,7 @@
 #define UART3_RX_PIN         PD9
 #define UART4_RX_PIN         PC11
 #define UART6_RX_PIN         PC7
-#define INVERTER6_PIN        PD3
+#define INVERTER_PIN_UART6   PD3
 #define I2C2_SCL_PIN         PB10
 #define I2C2_SDA_PIN         PB11
 #define LED0_PIN             PE3
@@ -79,7 +79,7 @@
 #define ADC_VBAT_PIN         PC3
 #define ADC_RSSI_PIN         PC1
 #define ADC_CURR_PIN         PC2
-#define SDCARD_CS_PIN        PE15
+#define SDCARD_SPI_CS_PIN    PE15
 #define GYRO_1_EXTI_PIN      PB0
 #define GYRO_1_CS_PIN        PA4
 #define USB_DETECT_PIN       PA9
@@ -117,7 +117,7 @@
 #define USE_SDCARD_SPI
 #define SDCARD_SPI_INSTANCE SPI2
 #define SYSTEM_HSE_MHZ 8
-//TODO #define DASHBOARD_I2C_BUS 2
+#define DASHBOARD_I2C_INSTANCE (I2CDEV_2)
 #define USE_SPI_GYRO
 #define GYRO_1_SPI_INSTANCE SPI1
 #define GYRO_1_ALIGN CW90_DEG
