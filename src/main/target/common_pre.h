@@ -76,7 +76,7 @@
 
 #define USE_MAG
 
-#if !defined(USE_BARO) && !defined(USE_FAKE_BARO)
+#if !defined(USE_BARO) && !defined(USE_VIRTUAL_BARO)
 #define USE_BARO
 
 #define USE_BARO_MS5611
@@ -265,10 +265,6 @@
 #endif
 #endif
 
-#if (defined(USE_SDCARD) || defined(USE_FLASH)) && !defined(USE_BLACKBOX)
-#define USE_BLACKBOX
-#endif
-
 #if defined(USE_PINIO)
 #define USE_PINIOBOX
 #define USE_PIN_PULL_UP_DOWN
@@ -323,7 +319,7 @@
 #define USE_SPEKTRUM_BIND
 #define USE_SPEKTRUM_BIND_PLUG
 #define USE_SPEKTRUM_REAL_RSSI
-#define USE_SPEKTRUM_FAKE_RSSI
+#define USE_SPEKTRUM_VIRTUAL_RSSI
 #define USE_SPEKTRUM_RSSI_PERCENT_CONVERSION
 #define USE_SPEKTRUM_VTX_CONTROL
 #define USE_SPEKTRUM_VTX_TELEMETRY
