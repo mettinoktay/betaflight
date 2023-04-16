@@ -33,6 +33,8 @@
 #define USE_GYRO_SPI_MPU6000
 #define USE_ACC_SPI_MPU6000
 #define USE_MAX7456
+#define USE_FLASH
+#define USE_FLASH_W25Q128FV
 
 #define BEEPER_PIN           PB4
 #define MOTOR1_PIN           PB0
@@ -97,7 +99,6 @@
 
 #define ADC2_DMA_OPT        1
 
-//TODO #define MAG_BUSTYPE I2C
 #define MAG_I2C_INSTANCE (I2CDEV_2)
 #define USE_BARO
 #define BARO_I2C_INSTANCE (I2CDEV_2)

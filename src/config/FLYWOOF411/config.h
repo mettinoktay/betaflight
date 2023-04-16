@@ -32,6 +32,8 @@
 #define USE_GYRO
 #define USE_GYRO_SPI_ICM20689
 #define USE_GYRO_SPI_MPU6000
+#define USE_BARO
+#define USE_BARO_BMP280
 #define USE_FLASH
 #define USE_FLASH_W25Q128FV
 #define USE_MAX7456
@@ -74,7 +76,7 @@
     TIMER_PIN_MAP( 0, PA2 , 3, -1) \
     TIMER_PIN_MAP( 1, PA8 , 1,  1) \
     TIMER_PIN_MAP( 2, PA9 , 1,  1) \
-    TIMER_PIN_MAP( 3, PA10, 1,  0) \
+    TIMER_PIN_MAP( 3, PA10, 1,  1) \
     TIMER_PIN_MAP( 4, PB0 , 2,  0) \
     TIMER_PIN_MAP( 5, PB4 , 1,  0) \
     TIMER_PIN_MAP( 6, PB1 , 2,  0) \
@@ -86,9 +88,7 @@
 
 #define ADC1_DMA_OPT        1
 
-//TODO #define MAG_BUSTYPE I2C
 #define MAG_I2C_INSTANCE (I2CDEV_1)
-#define USE_BARO
 #define BARO_I2C_INSTANCE (I2CDEV_1)
 #define DEFAULT_DSHOT_BURST DSHOT_DMAR_ON
 //TODO #define MOTOR_PWM_PROTOCOL DSHOT600

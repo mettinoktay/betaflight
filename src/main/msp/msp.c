@@ -138,6 +138,7 @@
 #include "scheduler/scheduler.h"
 
 #include "sensors/acceleration.h"
+#include "sensors/adcinternal.h"
 #include "sensors/barometer.h"
 #include "sensors/battery.h"
 #include "sensors/boardalignment.h"
@@ -1116,6 +1117,14 @@ static bool mspProcessOutCommand(mspDescriptor_t srcDesc, int16_t cmdMSP, sbuf_t
             // config state flags - bits to indicate the state of the configuration, reboot required, etc.
             // other flags can be added as needed
             sbufWriteU8(dst, (getRebootRequired() << 0));
+
+            // Added in API version 1.46
+            // Write CPU temp
+#ifdef USE_ADC_INTERNAL                
+            sbufWriteU16(dst, getCoreTemperatureCelsius());
+#else
+            sbufWriteU16(dst, 0);
+#endif
         }
         break;
 
@@ -2039,20 +2048,31 @@ case MSP_NAME:
         sbufWriteU16(dst, currentPidProfile->tpa_breakpoint);   // was currentControlRateProfile->tpa_breakpoint
         break;
     case MSP_SENSOR_CONFIG:
+        // if sensor name is default setting, use name in runtime config
+        // use sensorIndex_e index: 0:GyroHardware, 1:AccHardware, 2:BaroHardware, 3:MagHardware, 4:RangefinderHardware
 #if defined(USE_ACC)
-        sbufWriteU8(dst, accelerometerConfig()->acc_hardware);
+        // Changed with API 1.46
+        sbufWriteU8(dst, accelerometerConfig()->acc_hardware == ACC_DEFAULT ? detectedSensors[1] : accelerometerConfig()->acc_hardware);
 #else
         sbufWriteU8(dst, 0);
 #endif
 #ifdef USE_BARO
-        sbufWriteU8(dst, barometerConfig()->baro_hardware);
+        // Changed with API 1.46
+        sbufWriteU8(dst, barometerConfig()->baro_hardware == BARO_DEFAULT ? detectedSensors[2] : barometerConfig()->baro_hardware);
 #else
         sbufWriteU8(dst, BARO_NONE);
 #endif
 #ifdef USE_MAG
-        sbufWriteU8(dst, compassConfig()->mag_hardware);
+        // Changed with API 1.46
+        sbufWriteU8(dst, compassConfig()->mag_hardware == MAG_DEFAULT ? detectedSensors[3] : compassConfig()->mag_hardware);
 #else
         sbufWriteU8(dst, MAG_NONE);
+#endif
+        // Added in MSP API 1.46
+#ifdef USE_RANGEFINDER
+        sbufWriteU8(dst, rangefinderConfig()->rangefinder_hardware);    // no RANGEFINDER_DEFAULT value
+#else
+        sbufWriteU8(dst, RANGEFINDER_NONE);
 #endif
         break;
 
