@@ -514,6 +514,11 @@ static void printValuePointer(const char *cmdName, const clivalue_t *var, const 
                 // uin32_t array
                 cliPrintf("%u", ((uint32_t *)valuePointer)[i]);
                 break;
+
+            case VAR_INT32:
+                // in32_t array
+                cliPrintf("%d", ((int32_t *)valuePointer)[i]);
+                break;
             }
 
             if (i < var->config.array.length - 1) {
@@ -544,6 +549,10 @@ static void printValuePointer(const char *cmdName, const clivalue_t *var, const 
             value = *(uint32_t *)valuePointer;
 
             break;
+        case VAR_INT32:
+            value = *(int32_t *)valuePointer;
+
+            break;
         }
 
         bool valueIsCorrupted = false;
@@ -552,6 +561,13 @@ static void printValuePointer(const char *cmdName, const clivalue_t *var, const 
             if ((var->type & VALUE_TYPE_MASK) == VAR_UINT32) {
                 cliPrintf("%u", (uint32_t)value);
                 if ((uint32_t)value > var->config.u32Max) {
+                    valueIsCorrupted = true;
+                } else if (full) {
+                    cliPrintf(" 0 %u", var->config.u32Max);
+                }
+            } else if ((var->type & VALUE_TYPE_MASK) == VAR_INT32) {
+                cliPrintf("%d", (int32_t)value);
+                if ((int32_t)value > var->config.d32Max || (int32_t)value < -var->config.d32Max) {
                     valueIsCorrupted = true;
                 } else if (full) {
                     cliPrintf(" 0 %u", var->config.u32Max);
@@ -626,6 +642,9 @@ static bool valuePtrEqualsDefault(const clivalue_t *var, const void *ptr, const 
             break;
         case VAR_UINT32:
             result = result && (((uint32_t *)ptr)[i] & mask) == (((uint32_t *)ptrDefault)[i] & mask);
+            break;
+        case VAR_INT32:
+            result = result && (((int32_t *)ptr)[i] & mask) == (((int32_t *)ptrDefault)[i] & mask);
             break;
         }
     }
@@ -793,6 +812,10 @@ static void cliPrintVarRange(const clivalue_t *var)
             cliPrintLinef("Allowed range: 0 - %u", var->config.u32Max);
 
             break;
+        case VAR_INT32:
+            cliPrintLinef("Allowed range: %d - %d", -var->config.d32Max, var->config.d32Max);
+
+            break;
         case VAR_UINT8:
         case VAR_UINT16:
             cliPrintLinef("Allowed range: %d - %d", var->config.minmaxUnsigned.min, var->config.minmaxUnsigned.max);
@@ -873,6 +896,16 @@ static void cliSetVar(const clivalue_t *var, const uint32_t value)
             }
             *(uint32_t *)ptr = workValue;
             break;
+
+        case VAR_INT32:
+            mask = 1 << var->config.bitpos;
+            if (value) {
+                workValue = *(int32_t *)ptr | mask;
+            } else {
+                workValue = *(int32_t *)ptr & ~mask;
+            }
+            *(int32_t *)ptr = workValue;
+            break;
         }
     } else {
         switch (var->type & VALUE_TYPE_MASK) {
@@ -894,6 +927,10 @@ static void cliSetVar(const clivalue_t *var, const uint32_t value)
 
         case VAR_UINT32:
             *(uint32_t *)ptr = value;
+            break;
+
+        case VAR_INT32:
+            *(int32_t *)ptr = value;
             break;
         }
     }
@@ -4400,6 +4437,14 @@ STATIC_UNIT_TESTED void cliSet(const char *cmdName, char *cmdline)
                         cliSetVar(val, value);
                         valueChanged = true;
                     }
+                } else if ((val->type & VALUE_TYPE_MASK) == VAR_INT32) {
+                    int32_t value = strtol(eqptr, NULL, 10);
+
+                    // INT32s are limited to being symmetric, so we test both bounds with the same magnitude
+                    if (value <= val->config.d32Max && value >= -val->config.d32Max) {
+                        cliSetVar(val, value);
+                        valueChanged = true;
+                    }
                 } else {
                     int value = atoi(eqptr);
 
@@ -4495,7 +4540,16 @@ STATIC_UNIT_TESTED void cliSet(const char *cmdName, char *cmdline)
                             uint32_t *data = (uint32_t *)cliGetValuePointer(val) + i;
                             // store value
                             *data = (uint32_t)strtoul((const char*) valPtr, NULL, 10);
-                       }
+                        }
+
+                        break;
+                    case VAR_INT32:
+                        {
+                            // fetch data pointer
+                            int32_t *data = (int32_t *)cliGetValuePointer(val) + i;
+                            // store value
+                            *data = (int32_t)strtol((const char*) valPtr, NULL, 10);
+                        }
 
                         break;
                     }
@@ -4674,14 +4728,13 @@ static void cliStatus(const char *cmdName, char *cmdline)
     cliPrintLinef("OSD: %s (%u x %u)", lookupTableOsdDisplayPortDevice[displayPortDeviceType], osdDisplayPort->cols, osdDisplayPort->rows);
 #endif
 
-#ifdef BUILD_KEY
+if (buildKey) {
     cliPrintf("BUILD KEY: %s", buildKey);
-#ifdef RELEASE_NAME
-    cliPrintf(" (%s)", STR(RELEASE_NAME));
-#endif
+    if (releaseName) {
+        cliPrintf(" (%s)", releaseName);
+    }
     cliPrintLinefeed();
-#endif
-
+}
     // Uptime and wall clock
 
     cliPrintf("System Uptime: %d seconds", millis() / 1000);
@@ -4730,6 +4783,45 @@ static void cliStatus(const char *cmdName, char *cmdline)
         cliPrintLinef("FLASH: JEDEC ID=0x%08x %uM", layout->jedecId, layout->totalSize >> 20);
     }
 #endif
+
+#ifdef USE_GPS
+    cliPrint("GPS: ");
+    if (featureIsEnabled(FEATURE_GPS)) {
+        if (gpsIsHealthy()) {
+            cliPrint("connected, ");
+        } else {
+            cliPrint("NOT CONNECTED, ");
+        }
+        if (gpsConfig()->provider == GPS_MSP) {
+            cliPrint("MSP, ");
+        } else {
+            const serialPortConfig_t *gpsPortConfig = findSerialPortConfig(FUNCTION_GPS);
+            if (!gpsPortConfig) {
+                cliPrint("NO PORT, ");
+            } else {
+                cliPrintf("UART%d %ld (set to ", (gpsPortConfig->identifier + 1), baudRates[getGpsPortActualBaudRateIndex()]);
+                if (gpsConfig()->autoBaud == GPS_AUTOBAUD_ON) {
+                    cliPrint("AUTO");
+                } else {
+                    cliPrintf("%ld", baudRates[gpsPortConfig->gps_baudrateIndex]);
+                }
+                cliPrint("), ");
+            }
+        }
+        if (!gpsIsHealthy()) {
+            cliPrint("NOT CONFIGURED");
+        } else {
+            if (gpsConfig()->autoConfig == GPS_AUTOCONFIG_OFF) {
+                cliPrint("auto config OFF");
+            } else {
+                cliPrint("configured");
+            }
+        }
+    } else {
+        cliPrint("NOT ENABLED");
+    }
+    cliPrintLinefeed();
+#endif // USE_GPS
 
     cliPrint("Arming disable flags:");
     armingDisableFlags_e flags = getArmingDisableFlags();
@@ -4817,6 +4909,10 @@ static void printVersion(bool printBoardInfo)
     );
 
     cliPrintLinefeed();
+
+#if defined(__CONFIG_REVISION__)
+    cliPrintLinef("# config rev: %s", shortConfigGitRevision);
+#endif
 
 #if defined(USE_BOARD_INFO)
     if (printBoardInfo && strlen(getManufacturerId()) && strlen(getBoardName())) {

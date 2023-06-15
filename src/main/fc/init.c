@@ -86,6 +86,7 @@
 
 #include "fc/board_info.h"
 #include "fc/dispatch.h"
+#include "fc/gps_lap_timer.h"
 #include "fc/init.h"
 #include "fc/rc_controls.h"
 #include "fc/runtime_config.h"
@@ -269,6 +270,15 @@ void init(void)
 
     // initialize IO (needed for all IO operations)
     IOInitGlobal();
+
+#ifdef USE_TIMER
+    // timerIOInit blindly reconfigures GPIO AF for all pins in the fullTimerHardware array regardless
+    // of if the timer pin is used already by something else.
+    // If it is called AFTER the SPI initilisation, any AF settings for the SPI are overridden by timer
+    // AF, making the SPI hang when it's used.
+    // To work-around this issue init timer AF before other AF, such as SPI/QSPI/OSPI/etc.
+    timerIOInit();
+#endif
 
 #ifdef USE_HARDWARE_REVISION_DETECTION
     detectHardwareRevision();
@@ -758,6 +768,9 @@ void init(void)
 #ifdef USE_GPS_RESCUE
         gpsRescueInit();
 #endif
+#ifdef USE_GPS_LAP_TIMER
+        gpsLapTimerInit();
+#endif // USE_GPS_LAP_TIMER
     }
 #endif
 
