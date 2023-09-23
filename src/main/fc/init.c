@@ -51,7 +51,7 @@
 #include "drivers/bus_quadspi.h"
 #include "drivers/bus_spi.h"
 #include "drivers/buttons.h"
-#include "drivers/camera_control.h"
+#include "drivers/camera_control_impl.h"
 #include "drivers/compass/compass.h"
 #include "drivers/dma.h"
 #include "drivers/exti.h"
@@ -854,12 +854,6 @@ void init(void)
 #endif
 
 #endif // VTX_CONTROL
-
-#ifdef USE_TIMER
-    // start all timers
-    // TODO - not implemented yet
-    timerStart();
-#endif
 
     batteryInit(); // always needs doing, regardless of features.
 

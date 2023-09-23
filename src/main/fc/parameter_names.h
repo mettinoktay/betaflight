@@ -143,9 +143,9 @@
 #define PARAM_NAME_GPS_AUTO_CONFIG "gps_auto_config"
 #define PARAM_NAME_GPS_AUTO_BAUD "gps_auto_baud"
 #define PARAM_NAME_GPS_UBLOX_USE_GALILEO "gps_ublox_use_galileo"
-#define PARAM_NAME_GPS_UBLOX_FULL_POWER "gps_ublox_full_power"
 #define PARAM_NAME_GPS_UBLOX_ACQUIRE_MODEL "gps_ublox_acquire_model"
 #define PARAM_NAME_GPS_UBLOX_FLIGHT_MODEL "gps_ublox_flight_model"
+#define PARAM_NAME_GPS_UBLOX_UTC_STANDARD "gps_ublox_utc_standard"
 #define PARAM_NAME_GPS_SET_HOME_POINT_ONCE "gps_set_home_point_once"
 #define PARAM_NAME_GPS_USE_3D_SPEED "gps_use_3d_speed"
 #define PARAM_NAME_GPS_NMEA_CUSTOM_COMMANDS "gps_nmea_custom_commands"
@@ -158,10 +158,11 @@
 #define PARAM_NAME_GPS_RESCUE_ASCEND_RATE "gps_rescue_ascend_rate"
 
 #define PARAM_NAME_GPS_RESCUE_RETURN_ALT "gps_rescue_return_alt"
-#define PARAM_NAME_GPS_RESCUE_RETURN_SPEED "gps_rescue_ground_speed"
+#define PARAM_NAME_GPS_RESCUE_GROUND_SPEED "gps_rescue_ground_speed"
 #define PARAM_NAME_GPS_RESCUE_MAX_RESCUE_ANGLE "gps_rescue_max_angle"
 #define PARAM_NAME_GPS_RESCUE_ROLL_MIX "gps_rescue_roll_mix"
 #define PARAM_NAME_GPS_RESCUE_PITCH_CUTOFF "gps_rescue_pitch_cutoff"
+#define PARAM_NAME_GPS_RESCUE_IMU_YAW_GAIN "gps_rescue_imu_yaw_gain"
 
 #define PARAM_NAME_GPS_RESCUE_DESCENT_DIST "gps_rescue_descent_dist"
 #define PARAM_NAME_GPS_RESCUE_DESCEND_RATE "gps_rescue_descend_rate"

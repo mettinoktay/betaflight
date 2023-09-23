@@ -145,7 +145,7 @@ void pgResetFn_ledStripConfig(ledStripConfig_t *ledStripConfig)
 
 #ifdef USE_LED_STRIP_STATUS_MODE
 
-#if LED_MAX_STRIP_LENGTH > WS2811_LED_STRIP_LENGTH
+#if LED_STRIP_MAX_LENGTH > WS2811_LED_STRIP_LENGTH
 # error "Led strip length must match driver"
 #endif
 
@@ -187,7 +187,7 @@ PG_REGISTER_WITH_RESET_FN(ledStripStatusModeConfig_t, ledStripStatusModeConfig, 
 
 void pgResetFn_ledStripStatusModeConfig(ledStripStatusModeConfig_t *ledStripStatusModeConfig)
 {
-    memset(ledStripStatusModeConfig->ledConfigs, 0, LED_MAX_STRIP_LENGTH * sizeof(ledConfig_t));
+    memset(ledStripStatusModeConfig->ledConfigs, 0, LED_STRIP_MAX_LENGTH * sizeof(ledConfig_t));
     // copy hsv colors as default
     memset(ledStripStatusModeConfig->colors, 0, ARRAYLEN(hsv) * sizeof(hsvColor_t));
     STATIC_ASSERT(LED_CONFIGURABLE_COLOR_COUNT >= ARRAYLEN(hsv), LED_CONFIGURABLE_COLOR_COUNT_invalid);
@@ -260,7 +260,7 @@ STATIC_UNIT_TESTED void updateLedCount(void)
 {
     int count = 0, countRing = 0, countScanner= 0;
 
-    for (int ledIndex = 0; ledIndex < LED_MAX_STRIP_LENGTH; ledIndex++) {
+    for (int ledIndex = 0; ledIndex < LED_STRIP_MAX_LENGTH; ledIndex++) {
         const ledConfig_t *ledConfig = &ledStripStatusModeConfig()->ledConfigs[ledIndex];
 
         if (!(*ledConfig))
@@ -302,7 +302,7 @@ static const char overlayCodes[LED_OVERLAY_COUNT]   = { 'T', 'Y', 'O', 'B', 'V',
 #define CHUNK_BUFFER_SIZE 11
 bool parseLedStripConfig(int ledIndex, const char *config)
 {
-    if (ledIndex >= LED_MAX_STRIP_LENGTH)
+    if (ledIndex >= LED_STRIP_MAX_LENGTH)
         return false;
 
     enum parseState_e {
@@ -898,26 +898,26 @@ static void applyLedThrustRingLayer(bool updateNow, timeUs_t *timer)
 
 static void applyRainbowLayer(bool updateNow, timeUs_t *timer)
 {
+    //use offset as a fixed point number
     static int offset = 0;
 
     if (updateNow) {
-        *timer += HZ_TO_US(ledStripConfig()->ledstrip_rainbow_freq);
+        offset += ledStripConfig()->ledstrip_rainbow_freq;
+        *timer += HZ_TO_US(TASK_LEDSTRIP_RATE_HZ);
     }
-
     uint8_t rainbowLedIndex = 0;
 
     for (unsigned i = 0; i < ledCounts.count; i++) {
         const ledConfig_t *ledConfig = &ledStripStatusModeConfig()->ledConfigs[i];
         if (ledGetOverlayBit(ledConfig, LED_OVERLAY_RAINBOW)) {
             hsvColor_t ledColor;
-            ledColor.h = (offset + (rainbowLedIndex * ledStripConfig()->ledstrip_rainbow_delta)) % HSV_HUE_MAX;
+            ledColor.h = (offset / TASK_LEDSTRIP_RATE_HZ + rainbowLedIndex * ledStripConfig()->ledstrip_rainbow_delta) % (HSV_HUE_MAX + 1);
             ledColor.s = 0;
             ledColor.v = HSV_VALUE_MAX;
             setLedHsv(i, &ledColor);
             rainbowLedIndex++;
         }
     }
-    offset++;
 }
 
 typedef struct larsonParameters_s {

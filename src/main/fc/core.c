@@ -92,6 +92,7 @@
 #include "pg/pg_ids.h"
 #include "pg/rx.h"
 
+#include "rx/rc_stats.h"
 #include "rx/rx.h"
 
 #include "scheduler/scheduler.h"
@@ -296,10 +297,10 @@ void updateArmingStatus(void)
 
             if (justGotRxBack && IS_RC_MODE_ACTIVE(BOXARM)) {
                 // If the RX has just started to receive a signal again and the arm switch is on, apply arming restriction
-                setArmingDisabled(ARMING_DISABLED_BAD_RX_RECOVERY);
+                setArmingDisabled(ARMING_DISABLED_NOT_DISARMED);
             } else if (haveRx && !IS_RC_MODE_ACTIVE(BOXARM)) {
                 // If RX signal is OK and the arm switch is off, remove arming restriction
-                unsetArmingDisabled(ARMING_DISABLED_BAD_RX_RECOVERY);
+                unsetArmingDisabled(ARMING_DISABLED_NOT_DISARMED);
             }
 
             hadRx = haveRx;
@@ -553,6 +554,10 @@ void tryArm(void)
         osdSuppressStats(false);
 #endif
         ENABLE_ARMING_FLAG(ARMED);
+
+#ifdef USE_RC_STATS
+        NotifyRcStatsArming();
+#endif
 
         resetTryingToArm();
 
